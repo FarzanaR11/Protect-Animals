@@ -6,6 +6,7 @@
 	<meta http-equiv="A-UA-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Volunteer Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<php>
 	<style type="text/css">
 		@import url('https://fonts.googleapis.com/css2?family=Asap');
@@ -22,7 +23,7 @@
 		}
 		.main{
 			width: 500px;
-			height: 500px;
+			height: 824px;
 			background: #eceff1;
 			margin: 100px auto;
 			position: 70px;
@@ -63,9 +64,9 @@
 </head>
 <body>
 	
-	<?php
+<?php
 	include 'dbcon.php';
-	  if(isset($_POST['submit'])){
+	 if(isset($_POST['submit'])){
 		$username = mysqli_real_escape_string($con, $_POST['username']);
 		$email =  mysqli_real_escape_string($con, $_POST['email']);
 		$mobile =  mysqli_real_escape_string($con, $_POST['mobile']);
@@ -76,47 +77,21 @@
 
 		$pass = password_hash($password, PASSWORD_BCRYPT);
 		$cpass = password_hash($cpassword, PASSWORD_BCRYPT);
-		$emailquery = " select * from registration where email = '$email'";
-		$query = mysqli_query($con, $emailquery);
-		$emailcount = mysqli_num_rows($query);
+		// $emailquery = " select * from registration where email = '$email'";
+		// $query = mysqli_query($con, $emailquery);
+		// $emailcount = mysqli_num_rows($query);
 
-		if($emailcount>0){
-			?>
-	            <script >
-		          alert("Email already exist");
-	            </script>
-	        <?php  
-		}else{
-			if($password === $cpassword){
+		$insertquery = "insert into volunteer(username, email, mobile, division, postcode, password, cpassword) values('$username', '$email', '$mobile', '$division', '$postcode', '$pass', '$cpass')";
+		
+		$iquery = mysqli_query($con, $insertquery);
+		if ($iquery) {
+	        echo "<script>alert('Inserted Successfully')</script>";
+	    }else{
+	        echo "Not Inserted";
+        }
+    }
+?>
 
-				$insertquery = "insert into volunteer(username, email, mobile, division, postcode, password, cpassword) values('$username', '$email', '$mobile', '$division', '$postcode', '$pass', '$cpass')";
-				$iquery = mysqli_query($con, $insertquery);
-				  if ($iquery) {
-	               ?>
-	               <script >
-		             alert("Inserted Successfully");
-	               </script>
-	               <?php  
-                  }else{
-	              ?>
-	              <script >
-		          alert("Not Inserted");
-	              </script>
-
-	              <?php
-                  }
-
-			      }else{
-				  ?>
-				  <script >
-		          alert("Password are not matching");
-	              </script>
-
-	             <?php
-			}
-		}
-	}
-	?>
 
 	<div class="main">
 		<header>
@@ -126,41 +101,40 @@
 		</header>
 		<div class="new">
 		<form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post" id="form-box">
-
-			
-			<div class="input">
-				<input type="text" name="username" placeholder="Username" class="inp" required>
-			</div>
-
-			<div class="input">
-				<input type="email" name="email" placeholder="E-mail" class="inp" required>
-			</div>
-			
-			<div class="input">
-				<input type="text" name="mobile" placeholder="Phone" class="inp" required>
-			</div>
-			
-			<div class="input">
-				<input type="text" name="division" placeholder="Division" class="inp" required>
-			</div>
-		   
-			</div>
-			<div class="input">
-				<input type="number" name="postcode" placeholder="Post Code" class="inp" required>
-			</div>
-			
-			<div class="input">
-				<input type="password" name="password" placeholder="Password" class="inp" required>
-			</div>
-			
-			<div class="input">
-				<input type="password" name="cpassword" placeholder="Re-type Password" class="inp" required>
-			</div>
-
-			<input type="submit" name="submit" value="Register Now" class="sub-btn">
+			<table class="table">
+				<tr>
+					<td ><input type="text" name="username" placeholder="Username" class="form-control" required></td>
+				</tr>
+				<tr>
+					<td>--</td>
+				</tr>
+				<tr>
+					<td><input type="email" name="email" placeholder="email" class="form-control" required></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="mobile" placeholder="Phone" class="form-control" required></td>
+				</tr>
+				<tr>
+					<td><input type="text" name="division" placeholder="Division" class="form-control" required></td>
+				</tr>
+				<tr>
+					<td><input type="number" name="postcode" placeholder="Post Code" class="form-control" required></td>
+				</tr>
+				<tr>
+					<td><input type="password" name="password" placeholder="Password" class="form-control" required></td>
+				</tr>
+				<tr>
+					<td><input type="password" name="cpassword" placeholder="Re-type Password" class="form-control" required></td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="submit" value="Register Now" class="btn btn-success"></td>
+				</tr>
+				
+			</table>
+			<p>Already have an account?&nbsp;<a href="login.php">Login</a></p>
 		</form><br><br>
 		<div class="footer">
-			<p>Already have an account?&nbsp;<a href="login.php">Login</a></p>
+			
 		</div>
 	    </div>
 	</div>
