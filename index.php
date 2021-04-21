@@ -1,3 +1,12 @@
+<?php 
+session_start();
+
+if (!$_SESSION['login']) {
+  header("Location: login.php");
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +20,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
 <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
 </head>
+<?php 
+  if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location:login.php");
+  }
+ ?>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#"><?php echo $_SESSION["username"]; ?></a>
+    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link btn btn-success" href="?logout">Logout</a>
+      </li>
+    </ul>
+  </nav>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">PROTECT PETS</a>
@@ -37,11 +62,11 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="https://www.tutorialspoint.com/how-to-take-care-of-pets-at-home">How to take care pets</a>
-          <a class="dropdown-item" href="https://www.avma.org/resources-tools/pet-owners/petcare/vaccinations">Pet vaccine</a>
-          <a class="dropdown-item" href="https://petbangla.com/">Pet food</a>
-          <a class="dropdown-item" href="https://www.pet.com.bd/vet-finder/">Vets</a>
-          <a class="dropdown-item" href="https://www.finddoctor24.com/dhaka-animal-hospital-list-location/">Veterinary hospitals</a>
-          <a class="dropdown-item" href="https://cvasu.ac.bd/">Study</a>
+          <a class="dropdown-item" href="https://www.avma.org/resources-tools/pet-owners/petcare/vaccinations">About vaccine</a>
+          <a class="dropdown-item" href="https://petbangla.com/">About food store</a>
+          <a class="dropdown-item" href="https://www.pet.com.bd/vet-finder/">About vets</a>
+          <a class="dropdown-item" href="https://www.finddoctor24.com/dhaka-animal-hospital-list-location/">About hospitals</a>
+          <a class="dropdown-item" href="https://cvasu.ac.bd/">About study</a>
       </li>
         
        
