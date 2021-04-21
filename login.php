@@ -2,8 +2,6 @@
 session_start();
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +9,8 @@ session_start();
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Volunteer login</title>
-    <link rel="stylesheet" type="text/css" href="css/style2.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" >
   </head>
   <body>
     <?php
@@ -35,33 +34,55 @@ session_start();
 
           if($pass_decode)
           {
-           echo "login successfull";
+            $_SESSION['login'] = true;
+            $_SESSION['username'] = $email_pass['username'];
+            header("Location: index.php");
+            exit();
           }else{ 
 
-          echo "password incorrect";
+          echo "<script>alert('password incorrect')</script>";
           }
   
         }else{
 
-        echo "Invalid email";
+        echo "<script>alert('Invalid email')</script>";
         }
     
       }  
     ?>
-    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post">
-      <h2>Volunteer login</h2>
-      
-      <label>Email</label>
-      <input type="email" name="email" placeholder="Enter email">
-
-      <label>Password</label>
-      <input type="password" name="password" placeholder="Enter password">
-      <button type="submit" name="submit">Login</button>
-      <br>
-      <div class="footer">
-      <p>Not have an account?&nbsp;<br><a href="regisv.php">Signup</a></p>
+    <h2 class="bg-success text-center p-3 text-light">Volunteer login</h2>
+  <section class="container ">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 mt-2 bg-secondary mb-2">
+        <form class="p-3" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post">
+          <table width="100%">
+            <tr>
+              <td><label>Email</label></td>
+              <td><input type="email" name="email" class="form-control" placeholder="Enter email"></td>
+            </tr>
+            <tr>
+              <td><label>Password</label></td>
+              <td><input type="password" name="password" class="form-control" placeholder="Enter password"></td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center"><button class="btn btn-primary" type="submit" name="submit">Login</button></td>
+            </tr>
+            
+          </table>
+          <br>
+            <p class="float-left">Not have an account?&nbsp;</p>
+            <a class="right" href="regisv.php">Signup</a>
+            </tr>
+            
+          </form>
+      </div>
+      <div class="col-md-3"></div>
     </div>
-    </form>
+      
+      
+  </section>
+      
 
     <?php include 'footer.php'; ?>
   </body>
