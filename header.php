@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
 <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
 </head>
+
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">PROTECT PETS</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +31,7 @@
           RESCUE
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="regis.php">Post for rescue</a>
+          <a class="dropdown-item" href="">Post for rescue</a>
           <a class="dropdown-item" href="#">News of rescue</a>
       </li>
        <li class="nav-item dropdown">
@@ -37,16 +40,29 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="https://www.tutorialspoint.com/how-to-take-care-of-pets-at-home">How to take care pets</a>
-          <a class="dropdown-item" href="https://www.avma.org/resources-tools/pet-owners/petcare/vaccinations">Pet vaccine</a>
-          <a class="dropdown-item" href="https://petbangla.com/">Pet food</a>
-          <a class="dropdown-item" href="https://www.pet.com.bd/vet-finder/">Vets</a>
-          <a class="dropdown-item" href="https://www.finddoctor24.com/dhaka-animal-hospital-list-location/">Veterinary hospitals</a>
-          <a class="dropdown-item" href="https://cvasu.ac.bd/">Study</a>
+          <a class="dropdown-item" href="https://www.avma.org/resources-tools/pet-owners/petcare/vaccinations">About vaccine</a>
+          <a class="dropdown-item" href="https://petbangla.com/">About food store</a>
+          <a class="dropdown-item" href="about_vets.php">About vets</a>
+          <a class="dropdown-item" href="about_hospitals.php">About hospitals</a>
+          <a class="dropdown-item" href="about_study.php">About study</a>
       </li>
-        
-       
-        <li class="nav-item">
-          <a class="nav-link" href="regisv.php">Volunteer</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Register
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="regisv.php">Volunteer</a>
+            <a class="dropdown-item" href="regis.php">User</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            login
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="login.php">Volunteer</a>
+            <a class="dropdown-item" href="loginuser.php">User</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="thanks.php">Thanks</a>
@@ -55,4 +71,4 @@
       
     </div>
   </div>
-</nav>
+</nav>  
