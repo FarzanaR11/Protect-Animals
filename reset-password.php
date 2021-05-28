@@ -1,7 +1,7 @@
 <?php
 /*
-Author: Javed Ur Rehman
-Website: https://www.allphptricks.com
+
+
 */
 ?>
 <html>
